@@ -44,6 +44,12 @@ gem 'will_paginate', '~> 3.0.5'
 gem 'simple_form'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'bootstrap-sass', '~> 3.3.4'
+gem 'font-awesome-rails'
+
+# Editor - blog post
+gem 'summernote-rails'
+gem 'tinymce-rails'
+gem 'geocoder'
 
 group :development do
   gem 'better_errors'
