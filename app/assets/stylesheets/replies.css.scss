@@ -1,0 +1,34 @@
+// Place all the styles related to the replies controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.reply-wrapper {
+  font-family: 'Raleway', sans-serif;
+
+  .input-field {
+    display: inline-block;
+    .input {
+      display: inline-block;
+    }
+
+    input[type='submit'] {
+      width: 20%;
+    }
+  }
+
+  .reply-box {
+    margin-left: 10px;
+  }
+
+  .reply-list {
+    margin-left: 10px;
+    color: #555;
+    .reply-name {
+      display: inline-block;
+    }
+
+    .reply-content {
+      display: inline-block;
+    }
+  }
+}

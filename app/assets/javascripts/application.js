@@ -12,5 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.magnific-popup.min.js
+//= require bootstrap
+//= require articles
+//= require summernote
+//= require tinymce
+//= require lang/summernote-ko-KR
 //= require turbolinks
 //= require_tree .
+

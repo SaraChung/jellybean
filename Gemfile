@@ -45,6 +45,7 @@ gem 'simple_form'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'font-awesome-rails'
+gem 'magnific-popup-rails'
 
 # Editor - blog post
 gem 'summernote-rails'

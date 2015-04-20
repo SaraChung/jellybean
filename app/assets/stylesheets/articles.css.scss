@@ -1,0 +1,136 @@
+// Place all the styles related to the articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.unpublished {
+	font-family: 'Raleway', sans-serif;
+	font-size: 1em;
+	font-weight: normal;
+	line-height: 1.5em;
+	margin-left: 10px;
+}
+
+.unpublished ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+.unpublished p {
+	text-transform: uppercase;
+}
+
+.write_post, .error_explanation {
+	font-family: 'Raleway', sans-serif;
+	font-size: 1em;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+
+.error_explanations {
+	font-family: 'Raleway', sans-serif;
+	font-size: 0.85em;
+	font-weight: normal;
+}
+
+.post:first-child {
+	border-top: 2px solid rgb(38,38,38);
+}
+
+.post {
+	border-bottom: 2px solid rgb(38,38,38);
+	margin: 0 10px;
+	text-align: center;
+}
+
+.date {
+	font-family: 'Raleway', sans-serif;
+	font-size: 1.125em;
+	color: rgb(100,100,100);
+}
+
+.content p {
+	text-align: left;
+	font-family: verdana, sans-serif;
+	font-size: 1em;
+	line-height: 1.5em;
+}
+
+.post_title {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
+	margin-bottom: 3px;
+	margin-top: 20px;
+	text-transform: uppercase;
+}
+
+.post_title a {
+	text-decoration: none;
+	color: rgb(38,38,38);
+	text-transform: uppercase;
+}
+
+.post_title a:hover {
+	text-decoration: none;
+	color: rgb(100,100,100);
+}
+
+.new .post_title {
+	font-size: 1.75em;
+	margin-top: 15px;
+}
+
+.old .post_title {
+	font-size: 1.5em;
+}
+
+.content img {
+	width: 100%;
+}
+
+.admin.new_link {
+	padding-top: 15px;
+}
+
+.old.thumbnail img {
+	height: 100%;
+	width: 200px;
+}
+
+.old.thumbnail {
+	height: 200px;
+	float: left;
+	border: none;
+}
+
+.old.snippet {
+	min-height: 200px;
+	text-align: left;
+	margin-left: 215px;
+}
+
+.old.snippet p {
+	margin-top: 7px;
+}
+
+.pagination {
+	font-family: 'Raleway', sans-serif;
+	color: rgb(38,38,38);
+	text-transform: uppercase;
+	font-size: 1.5em;
+	text-align: center;
+	margin-top: 30px;
+}
+
+.next_page.disabled, .previous_page.disabled {
+	display: none;
+}
+
+.img-preview img {
+	width: 200px;
+	height: auto;
+}
+
+.img-url {
+	font-size: 0.85em;
+	text-transform: none;
+}
