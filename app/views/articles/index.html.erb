@@ -1,0 +1,21 @@
+<% if @unpublished_articles %>
+  <div class="unpublished">
+    <p>Unpublished articles:</p>
+    <ul>
+    <% @unpublished_articles.each do |article| %>
+      <li><%= link_to article.title, edit_article_path(article) %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div>
+  <%= render @newest_article if @newest_article %>
+  <%= render partial: "older_article", collection: @older_articles %>
+  <%= will_paginate @articles, :previous_label => "< newer", :next_label => "older >", :page_links => false %>
+  <% if user_signed_in? %>
+    <div class="admin new_link">
+      <%= link_to 'New Article', new_article_path %>
+    </div>
+  <% end %>
+</div>

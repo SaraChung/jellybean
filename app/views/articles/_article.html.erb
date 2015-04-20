@@ -1,0 +1,14 @@
+<div class="post new">
+  <div class="new content">
+    <h2 class="post_title"><%= link_to_unless_current article.title, article %></h2>
+      <% if article.published %>
+        <div class="date"><%= article.published_at.strftime("%A, %B %-d, %Y") %></div>
+      <% end %>
+    <p><%= link_to_unless_current image_tag(article.thumbnail.url, :alt => article.title), article %></p>
+    <p><%= article.body.gsub(/\n/, '<br/>').html_safe %></p>
+    <p><%= article.address %></p>
+    <strong><%= link_to '< Back to main page', articles_path %></strong>
+    <br/>
+    <br/>
+  </div>
+</div>

@@ -38,10 +38,17 @@ gem 'devise', github: 'plataformatec/devise'
 gem 'rmagick', '2.13.2'
 gem 'paperclip', '~> 4.2'
 gem 'aws-sdk-v1'
+# For page numbers
+gem 'will_paginate', '~> 3.0.5'
 
 gem 'simple_form'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'bootstrap-sass', '~> 3.3.4'
+
+group :development do
+  gem 'better_errors'
+  gem 'quiet_assets'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

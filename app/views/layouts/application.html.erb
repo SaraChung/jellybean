@@ -1,21 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Jellybean</title>
+  <title>Blog</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
+
 <body>
+    <%- if flash[:error] %>
+      <div class="notice">
+        <ul>
+          <%- flash[:error].each do |message| %>
+            <li>
+              <%= message.join ' ' %>
+            </li>
+          <%end%>
+        </ul>
+      </div>
+    <%end%>
+  <div class="body">
+    <header>
+      <%= link_to(root_path) do %>
+        <h1 class="blog_title">crossing the rubicon</h1>
+      <% end %>
+    </header>
 
-  <% if notice %>
-    <p class="alert alert-notice"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-    <p class="alert alert-error"><%= alert %></p>
-  <% end %>
+    <% if notice %>
+      <p class="alert alert-notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-error"><%= alert %></p>
+    <% end %>
 
-<%= yield %>
+    <div class="main">
+      <%= yield %>
+      <footer>
+        <p class="byme">Developed and designed by Sara Chung (:</p>
+
+        <p class="admin">
+        <% if user_signed_in? %>
+          <%= link_to "Logout", destroy_user_session_path %>
+        <% end %>
+        </p>
+      </footer>
+    </div>
+
+    <div class="sidebar">
+      <a href="" class="about_link">
+        <img src="<%= asset_path 'blogphoto.jpg' %>" class="sidebar_image" nopin="nopin">
+        <span class="about">Sara Chung</span>
+      </a>
+      <ul class="social_links">
+        <li>
+          <a href="https://twitter.com/rah_chung"><span><i class="fa fa-twitter"></i></span></a>
+        </li>
+        <li>
+          <a href="https://github.com/SaraChung"><span><i class="fa fa-github"></i></span></a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/pub/sara-chung/32/726/a59"><span><i class="fa fa-linkedin"></i></span></a>
+        </li>
+      </ul>
+    </div>
+
+    <%#CONTACT ME%>
+
+    <div class="contact-me-link">
+      <div class="contact-me-wrapper">
+        <%= link_to "Contact me", "#contact-me", class: "contact-link-popup", data: { effect: "mfp-move-from-top" } %>
+      </div>
+    </div>
+
+    <section id="contact-me" class="white-popup mfp-with-anim mfp-hide">
+      <%= render 'contact_mes/form' %>
+    </section>
+  </div>
 
 </body>
 </html>

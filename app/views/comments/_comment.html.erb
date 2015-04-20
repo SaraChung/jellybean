@@ -1,0 +1,16 @@
+<div class="comment">
+  <p class="commenter"><%= comment.title %></p>
+  <p class="comment_body"><%= comment.body %></p>
+  <div class="reply-wrapper">
+    <div class="reply-list">
+      <%= render comment.replies %>
+    </div>
+    <%= render 'replies/form', comment: comment, article: article%>
+  </div>
+</div>
+
+<% if user_signed_in? %>
+  <div class="admin">
+    <%= link_to 'Destroy Comment', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure you want to delete that?' } %>
+  </div>
+<% end %>

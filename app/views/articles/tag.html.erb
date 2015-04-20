@@ -1,0 +1,4 @@
+<div>
+  <%= render partial: "older_article", collection: @articles %>
+  <%= will_paginate @articles, :previous_label => "< newer", :next_label => "older >", :page_links => false %>
+</div>

@@ -1,0 +1,74 @@
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.0.0-rc9.min.js"></script>
+
+<%= form_for @article do |f| %>
+  <% if @article.errors.any? %>
+    <div>
+      <h2 class="error_explanation"><%= pluralize(@article.errors.count, "error") %> prohibited this from being saved:</h2>
+      <ul>
+      <% @article.errors.full_messages.each do |msg| %>
+        <li class="error_explanations"><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="write_post">
+    <p class="field">
+      <%= f.text_field :title, :placeholder => "Article Title", class: "text_input" %>
+    </p>
+    <p class="field">
+      <%= f.label :thumbnail %><br />
+      <%= f.file_field :thumbnail %>
+    </p>
+    <p class="field">
+      <%= f.text_area :body, :placeholder => "Write Something", class: "text_input" %>
+    </p>
+    <p class="field">
+      <input type="file" id="img-chooser" />
+      <button type="button" id="img-chooser-button">Upload Image</button>
+      <div id="img-results"></div>
+    </p>
+    <p>
+      <%= f.label :published %><br />
+      <%= f.check_box :published %>
+      <%= f.submit %>
+    </p>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+AWS.config.update({
+  accessKeyId: "<%= ENV['AWS_ACCESS_KEY_ID'] %>",
+  secretAccessKey: "<%= ENV['AWS_SECRET_ACCESS_KEY'] %>",
+  region: 'us-west-2'
+});
+var bucket = new AWS.S3({
+  params: { Bucket: "<%= ENV['S3_BUCKET_NAME'] %>" }
+})
+var fileChooser = document.getElementById('img-chooser');
+var button = document.getElementById('img-chooser-button');
+console.log(button);
+var results = document.getElementById('img-results');
+button.addEventListener('click', function() {
+  var file = fileChooser.files[0];
+  console.log('Clicked with file ' + file);
+  if (!file) return;
+  var key = file.name;
+  var params = {
+    Key: key,
+    ContentType: file.type,
+    Body: file,
+    ACL: 'public-read'
+  };
+  bucket.putObject(params, function (err, data) {
+    console.log('Upload result: ' + data + ' (error: ' + err + ')');
+    if (err) {
+      alert('Failed to upload to S3: ' + err);
+      return;
+    }
+    var url = 'https://s3.amazonaws.com/sarachungblog/' + key;
+    var sampleTag = '&lt;img src=&quot;' + url + '&quot; /&gt;';
+    results.innerHTML += '<div class="img-upload"><div class="img-preview"><img src="' + url + '" /></div><div class="img-url">' + sampleTag + '</div></div>';
+  });
+}, false);
+</script>

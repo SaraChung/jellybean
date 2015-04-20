@@ -1,0 +1,16 @@
+<%= simple_form_for ContactMe.new do |f| %>
+  <h4>Contact me</h4>
+  <div class="input-field">
+    <%= f.input :name, label: false, input_html: { placeholder: 'Your name' }%>
+  </div>
+  <div class="input-field">
+    <%= f.input :email, as: :email, label: false, input_html: {placeholder: 'Your email'} %>
+  </div>
+  <div class="input-field">
+    <%= f.input :content, label: false, input_html: { placeholder: 'Content' }%>
+  </div>
+
+  <div class="input-field">
+    <%= f.submit "Send!" %>
+  </div>
+<%- end%>

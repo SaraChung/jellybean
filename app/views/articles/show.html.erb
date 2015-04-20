@@ -1,0 +1,14 @@
+<%= render @article %>
+
+<% if user_signed_in? %>
+	<div class="admin">
+		<%= link_to 'Edit', edit_article_path(@article) %> | <%= link_to 'Destroy', article_path(@article), method: :delete, data: { confirm: 'Are you sure you want to delete that?'} %>
+	</div>
+<% end %>
+
+<div class="comments">
+  <h2>Comments</h2>
+  <%= render @article.comments, article: @article %>
+  <h2>Write a Comment</h2>
+  <%= render 'comments/form' %>
+</div>

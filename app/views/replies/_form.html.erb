@@ -1,0 +1,9 @@
+<%= simple_form_for [article, comment, comment.replies.build] do |f| %>
+  <div class="reply-wrapper">
+    <div class="input-field">
+      <%= f.input :name, label: false, input_html: { class: 'name', placeholder: 'Your Name' }%>
+      <%= f.input :content, label: false, input_html: { class: 'content', placeholder: 'Reply' }%>
+      <%= f.submit "Reply" %>
+    </div>
+  </div>
+<%- end%>
